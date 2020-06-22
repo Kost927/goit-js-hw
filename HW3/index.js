@@ -182,3 +182,189 @@
 // console.log(calculateTotalPrice(products, "Дроид")); // 2800
 
 //! ======================== HW3 Task 7 ======================
+// /*
+//  * Типов транзацкий всего два.
+//  * Можно положить либо снять деньги со счета.
+//  */
+// const Transaction = {
+//   DEPOSIT: "deposit",
+//   WITHDRAW: "withdraw",
+// };
+
+// /*
+//  * Каждая транзакция это объект со свойствами: id, type и amount
+//  */
+
+// const account = {
+//   id: 0,
+//   // Текущий баланс счета
+//   balance: 0,
+
+//   // История транзакций
+//   transactions: [],
+
+//   /*
+//    * Метод создает и возвращает объект транзакции.
+//    * Принимает сумму и тип транзакции.
+//    */
+//   createTransaction(amount, type) {
+//     this.id += 1;
+//     return {
+//       id: this.id,
+//       type,
+//       amount,
+//     };
+//     console.log("id", id);
+//   },
+
+//   /*
+//    * Метод отвечающий за добавление суммы к балансу.
+//    * Принимает сумму танзакции.
+//    * Вызывает createTransaction для создания объекта транзакции
+//    * после чего добавляет его в историю транзакций
+//    */
+//   deposit(amount) {
+//     this.balance += amount;
+//     const newTransaction = this.createTransaction(amount, Transaction.DEPOSIT);
+//     this.transactions.push(newTransaction);
+//   },
+
+//   /*
+//    * Метод отвечающий за снятие суммы с баланса.
+//    * Принимает сумму танзакции.
+//    * Вызывает createTransaction для создания объекта транзакции
+//    * после чего добавляет его в историю транзакций.
+//    *
+//    * Если amount больше чем текущий баланс, выводи сообщение
+//    * о том, что снятие такой суммы не возможно, недостаточно средств.
+//    */
+//   withdraw(amount) {
+//     if (this.balance < amount) {
+//       console.log("снятие такой суммы не возможно, недостаточно средств");
+//     } else {
+//       this.balance -= amount;
+//       const newTransaction = this.createTransaction(
+//         amount,
+//         Transaction.WITHDRAW
+//       );
+//       this.transactions.push(newTransaction);
+//     }
+//   },
+
+//   /*
+//    * Метод возвращает текущий баланс
+//    */
+//   getBalance() {
+//     return this.balance;
+//   },
+
+//   /*
+//    * Метод ищет и возвращает объект транзации по id
+//    */
+//   getTransactionDetails(id) {
+//     // for (let i = 0; i < this.transaction.length; i += 1)
+//     //     if (this.transactions[i].id === id)
+//     //         return this.transactions[i];
+//     for (const transaction of this.transactions) {
+//       if (transaction.id === id) return transaction;
+//     }
+//   },
+
+//   /*
+//    * Метод возвращает количество средств
+//    * определенного типа транзакции из всей истории транзакций
+//    */
+//   getTransactionTotal(type) {
+//     let totalTransaction = 0;
+//     for (const transaction of this.transactions) {
+//       if (transaction.type === type) {
+//         totalTransaction += transaction.amount;
+//       }
+//     }
+//     return totalTransaction;
+//   },
+// };
+
+// // console.log(account.createTransaction(100, Transaction.DEPOSIT));
+// account.deposit(200);
+// account.deposit(300);
+// account.deposit(400);
+
+// account.withdraw(200);
+// account.withdraw(300);
+// account.withdraw(400);
+
+// console.log(account.getTransactionDetails(5));
+// console.log(account.getTransactionTotal("withdraw"));
+
+// console.log(account);
+
+// ====================================== Dop task ==================================
+// const cart = {
+//   totalCount: 0,
+//   summary: 0,
+//   products: [],
+//   getTotalCount() {
+//     let totalProducts = 0;
+//     for (const product of this.products) {
+//       totalProducts += product.count;
+//     }
+//     this.totalCount = totalProducts;
+//   },
+//   getSummary() {
+//     let summaryProducts = 0;
+//     for (const product of this.products) {
+//       summaryProducts += product.price * product.count;
+//     }
+//     this.summary = summaryProducts;
+//   },
+//   addProductCount(id) {
+//     for (const product of this.products) {
+//       if (product.id === id) {
+//         product.count += 1;
+//       }
+//     }
+//     this.getSummary();
+//     this.getTotalCount();
+//   },
+//   removeProductCount(id) {
+//     for (const product of this.products) {
+//       if (product.id === id) {
+//         if (product.count >= 1) {
+//           product.count -= 1;
+//         } else {
+//           this.removeProduct(id);
+//         }
+//       }
+//     }
+//     this.getSummary();
+//     this.getTotalCount();
+//   },
+//   addProduct(product, count) {
+//     this.products.push(product);
+//     this.totalCount += count;
+//     this.summary += product.price * count;
+//   },
+//   removeProduct(id) {
+//     let filteredProducts = [];
+//     for (const product of this.products) {
+//       if (product.id !== id) {
+//         filteredProducts.push(product);
+//       }
+//     }
+//     this.products = [...filteredProducts];
+//     this.getSummary();
+//     this.getTotalCount();
+//     // for (const product of this.products) {
+//     //     if (product.id === id) {
+//     //         this.products = [...this.products.splice(this.products.indexOf(product), 1)];
+//     //     }
+//     // }
+//   },
+// };
+// const product = {
+//   count: 1,
+//   price: 0,
+//   name: "",
+//   id: Date.now(),
+// };
