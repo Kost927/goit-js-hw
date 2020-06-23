@@ -162,16 +162,17 @@
 // ];
 
 // const calculateTotalPrice = function (allProdcuts, productName) {
-//   let values = Object.values(allProdcuts);
 //   let total = 0;
 
-//   for (const value of values) {
-//     total += value;
+//   for (let i = 0; i < allProdcuts.length; i += 1) {
+//     const values = Object.values(allProdcuts[i]);
+//     console.log(values);
+
+//     if (values.includes(productName)) {
+//       total = values[1] * values[2];
+//     }
 //   }
-
-//   console.log(total);
-
-//   console.log(values);
+//   return total;
 // };
 
 // /*
@@ -368,3 +369,5 @@
 //   name: "",
 //   id: Date.now(),
 // };
+
+// ========================================
