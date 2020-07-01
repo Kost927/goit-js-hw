@@ -1,0 +1,9 @@
+ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.gallery_list {
+  width: 200px;
+}
