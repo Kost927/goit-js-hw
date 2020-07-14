@@ -47,75 +47,75 @@
 
 //!====================================== TASK 2 =====================================
 
-// class CountdownTimer {
-//     constructor ({
-// selector, targetDate
-//     }){
-//         this.selector = selector
-//         this.targetDate = targetDate
+class CountdownTimer {
+    constructor ({
+selector, targetDate
+    }){
+        this.selector = selector
+        this.targetDate = targetDate
 
-//         this.refs = {
-//             month: document.querySelector(`${this.selector} [data-value = month]`),
-//             days: document.querySelector(`${this.selector} [data-value = days]`),
-//             hours: document.querySelector(`${this.selector} [data-value = hours]`),
-//             mins: document.querySelector(`${this.selector} [data-value = mins]`),
-//             secs: document.querySelector(`${this.selector} [data-value = secs]`),
-//         };
+        this.refs = {
+            month: document.querySelector(`${this.selector} [data-value = month]`),
+            days: document.querySelector(`${this.selector} [data-value = days]`),
+            hours: document.querySelector(`${this.selector} [data-value = hours]`),
+            mins: document.querySelector(`${this.selector} [data-value = mins]`),
+            secs: document.querySelector(`${this.selector} [data-value = secs]`),
+        };
 
-//         this.start()
-//     }
+        this.start()
+    }
 
-//        calcTime (time) {
+       calcTime (time) {
 
-//             const days = this.pad(Math.floor(time / (1000 * 60 * 60 * 24)));
-//             const hours = this.pad(Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
-//             const mins = this.pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
-//             const secs = this.pad(Math.floor((time % (1000 * 60)) / 1000));
+            const days = this.pad(Math.floor(time / (1000 * 60 * 60 * 24)));
+            const hours = this.pad(Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+            const mins = this.pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
+            const secs = this.pad(Math.floor((time % (1000 * 60)) / 1000));
 
-//             this.changeElems(days, hours, mins, secs)
-//        };
+            this.changeElems(days, hours, mins, secs)
+       };
 
-//        changeElems (days, hours, mins, secs) {
-//            this.refs.days.innerHTML = days
-//            this.refs.hours.innerHTML = hours
-//            this.refs.mins.innerHTML = mins
-//            this.refs.secs.innerHTML = secs
-//        }
+       changeElems (days, hours, mins, secs) {
+           this.refs.days.innerHTML = days
+           this.refs.hours.innerHTML = hours
+           this.refs.mins.innerHTML = mins
+           this.refs.secs.innerHTML = secs
+       }
 
-//        changeDate () {
+       changeDate () {
 
-//         const time = this.targetDate.getTime() - new Date().getTime()
-//             if (time > 0) {
-//              this.calcTime(time)
-// }             else {
+        const time = this.targetDate.getTime() - new Date().getTime()
+            if (time > 0) {
+             this.calcTime(time)
+}             else {
 
-//             this.viewError ()
-// }
+            this.viewError ()
+}
 
-//        }
+       }
 
-//          pad(value) {
-//         return String(value).padStart(2, "0");
-//   }
+         pad(value) {
+        return String(value).padStart(2, "0");
+  }
 
-//          start () {
-//             this.changeDate()
-//             setInterval(() => {
-//                 this.changeDate()
-//             }, 1000);
-//          }
+         start () {
+            this.changeDate()
+            setInterval(() => {
+                this.changeDate()
+            }, 1000);
+         }
 
-//          viewError (){
-//              document.querySelector(this.selector).innerHTML = "time is over"
-//          }
+         viewError (){
+             document.querySelector(this.selector).innerHTML = "time is over"
+         }
 
-// }
+}
 
 
-//   new CountdownTimer({
-//     selector: '#timer-1',
-//     targetDate: new Date('Jul 15, 2020'),
-//   });
+  new CountdownTimer({
+    selector: '#timer-1',
+    targetDate: new Date('Jul 25, 2020'),
+  });
 
 //!====================================== TASK 3 - 1 =====================================
 
@@ -169,57 +169,57 @@
 
   //!====================================== TASK 3 - 3 =====================================
 
-  const randomIntegerFromInterval = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  };
+//   const randomIntegerFromInterval = (min, max) => {
+//     return Math.floor(Math.random() * (max - min + 1) + min);
+//   };
   
-  const makeTransaction = transaction => {
-    return new Promise((resolve, reject) => {
-      const delay = randomIntegerFromInterval(200, 500);
-      setTimeout(() => {
-        const canProcess = Math.random() > 0.3;
-        if (canProcess) {
-          resolve({id: transaction.id, time: delay });
-        } else {
-            reject( transaction.id );
-        }
-      }, delay);
-    });
-  };
+//   const makeTransaction = transaction => {
+//     return new Promise((resolve, reject) => {
+//       const delay = randomIntegerFromInterval(200, 500);
+//       setTimeout(() => {
+//         const canProcess = Math.random() > 0.3;
+//         if (canProcess) {
+//           resolve({id: transaction.id, time: delay });
+//         } else {
+//             reject( transaction.id );
+//         }
+//       }, delay);
+//     });
+//   };
   
-  const logSuccess = ({id, time}) => {
-    console.log(`Transaction ${id} processed in ${time}ms`);
-  };
+//   const logSuccess = ({id, time}) => {
+//     console.log(`Transaction ${id} processed in ${time}ms`);
+//   };
   
-  const logError = (id) => {
-    console.warn(`Error processing transaction ${id}. Please try again later.`);
-  };
+//   const logError = (id) => {
+//     console.warn(`Error processing transaction ${id}. Please try again later.`);
+//   };
   
+// //   /*
+// //    * Работает так
+// //    */
+// //   makeTransaction({ id: 70, amount: 150 }, logSuccess, logError);
+// //   makeTransaction({ id: 71, amount: 230 }, logSuccess, logError);
+// //   makeTransaction({ id: 72, amount: 75 }, logSuccess, logError);
+// //   makeTransaction({ id: 73, amount: 100 }, logSuccess, logError);
 //   /*
-//    * Работает так
+//    * Должно работать так
 //    */
-//   makeTransaction({ id: 70, amount: 150 }, logSuccess, logError);
-//   makeTransaction({ id: 71, amount: 230 }, logSuccess, logError);
-//   makeTransaction({ id: 72, amount: 75 }, logSuccess, logError);
-//   makeTransaction({ id: 73, amount: 100 }, logSuccess, logError);
-  /*
-   * Должно работать так
-   */
-  makeTransaction({ id: 70, amount: 150 })
-    .then(logSuccess)
-    .catch(logError);
+//   makeTransaction({ id: 70, amount: 150 })
+//     .then(logSuccess)
+//     .catch(logError);
   
-  makeTransaction({ id: 71, amount: 230 })
-    .then(logSuccess)
-    .catch(logError);
+//   makeTransaction({ id: 71, amount: 230 })
+//     .then(logSuccess)
+//     .catch(logError);
   
-  makeTransaction({ id: 72, amount: 75 })
-    .then(logSuccess)
-    .catch(logError);
+//   makeTransaction({ id: 72, amount: 75 })
+//     .then(logSuccess)
+//     .catch(logError);
   
-  makeTransaction({ id: 73, amount: 100 })
-    .then(logSuccess)
-    .catch(logError);
+//   makeTransaction({ id: 73, amount: 100 })
+//     .then(logSuccess)
+//     .catch(logError);
 
 
 
